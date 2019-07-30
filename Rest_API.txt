@@ -1,0 +1,9 @@
+1) INDEX   ||  /blog    ||     GET || List all the blogs
+2) NEW     ||  /blog/new||  GET    || Show new dog forms
+3) CREATE  || /blog     || POST    || Create new dog 
+4) SHOW    || /blog/:id ||  GET    || Show Information
+5) EDIT    ||/blog/:id/edit || GET || Show edit form
+6) UPDATE  || /blog/:id     || PUT || Update particular blog
+7) Destroy || /dogs/:id     || DELETE || Delete the particular blog 
+
+HOME PAGE-Asking for Authentication,then redirect it to INDEX Page
