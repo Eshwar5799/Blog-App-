@@ -1,0 +1,61 @@
+i.icon{
+    font-size: 2em;
+}
+
+.require {
+    color: #666;
+}
+label small {
+    color: #999;
+    font-weight: normal;
+}
+
+
+
+a {
+    -webkit-transition: .25s all;
+    transition: .25s all;
+   }
+ .card-header{
+     text-align: center;
+     text-decoration: underline;
+     font-family: 'Times New Roman', Times, serif;
+     margin-bottom: 5px;
+ }
+ .card-img-top{
+     width: 62%;
+     border-radius: 25px;
+     text-decoration: underline;
+     margin-bottom: 8px;
+ }
+
+.thumbnail{
+    width:50%;
+    text-align: center;
+    margin: 0px auto;
+}
+.card {
+    margin-top: 10px; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    padding-left: initial;
+    padding-right: initial;
+
+}
+.card-text{
+    text-decoration: antiquewhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0px auto;
+    margin-bottom: 6px;
+}
+.card-footer.text-muted{
+    margin-bottom: 6px;
+}
+.btn.btn-danger{
+ border-radius: 25px;
+ margin-bottom: 7px;
+}
+.btn.btn-warning{
+    border-radius: 25px;
+    display: inline;
+}

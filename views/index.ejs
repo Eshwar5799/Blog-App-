@@ -1,16 +1,24 @@
 <% include ./partials/header %>
-<h1>Index Page</h1>
+
 
 <% Blogs.forEach(function(Blog){ %>
 
-    <div>
-        <h2><%=Blog.title%></h2>
-        <img src="<%=Blog.image%>" >
-        <span><%=Blog.created %></span>
-        <p><%=Blog.body %></p>
-    </div>
 
 
-
+                <div class="row">
+                        <div class="col-lg-4">
+                          <div class="thumbnail">
+                                <div class="card">
+                                        <div class="card-header">
+                                                <%=Blog.title %>
+                                        </div>
+                                        <img class="card-img-top" src="<%=Blog.image%>" alt="Card image top" >
+                                        <div class="card-body">
+                                            <p class="card-text"><%-Blog.body.substring(0,100) %>...</p>
+                                            <a href="/blogs/<%=Blog._id%>">Read More</a>
+                                        </div>
+                     
+                           </div>
+                        </div>
 <% }) %>
 <% include ./partials/footer %>

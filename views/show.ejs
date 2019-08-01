@@ -1,0 +1,38 @@
+<% include ./partials/header %>
+
+
+<div class="row">
+  <div class="col-lg-4">
+    <div class="thumbnail">
+          <div class="card">
+                  <div class="card-header">
+                          <%=blog.title %>
+                  </div>
+                  <img class="card-img-top" src="<%=blog.image%>" alt="Card image top" >
+                  <div class="card-body">
+                      <p class="card-text"><%-blog.body %></p>
+
+                      <div class="card-footer text-muted">
+                        <%=blog.created.toString() %>
+                      </div>
+                  </div>
+                  <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+
+                  <form id="edit" action="/blogs/<%=blog._id %>/edit" method="GET">
+                    <button class="btn btn-warning">Edit</button>
+                  </form>
+     </div>
+  </div>
+
+   
+ 
+
+<!---->
+
+
+
+
+
+<% include ./partials/footer %>

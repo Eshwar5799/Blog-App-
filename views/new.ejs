@@ -1,0 +1,44 @@
+<% include ./partials/header %>
+<div class="container">
+        <div class="row">
+            
+            <div class="col-md-8 col-md-offset-2">
+                
+                
+                <form action="/blogs" method="POST">
+                    
+                    <div class="form-group has-error">
+                        <label for="image">URL<span class="require">*</span></label>
+                        <input type="text" class="form-control" name="blog[image]" placeholder="URL" >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="title">Title <span class="require">*</span></label>
+                        <input type="text" class="form-control" name="blog[title]" placeholder="Title" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea rows="5" class="form-control" name="blog[body]" 
+                        placeholder="Post Goes in Here!!" ></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <p><span class="require"></span></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Create
+                        </button>
+                    
+                    </div>
+                    
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+
+<% include ./partials/footer %>
