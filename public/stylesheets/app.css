@@ -33,11 +33,12 @@ a {
     margin: 0px auto;
 }
 .card {
-    margin-top: 10px; /* Added */
+    
     float: none; /* Added */
-    margin-bottom: 10px; /* Added */
+    
     padding-left: initial;
     padding-right: initial;
+    margin: 0px auto;
 
 }
 .card-text{
