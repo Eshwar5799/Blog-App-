@@ -42,7 +42,7 @@ var Blog=mongoose.model("Blog",Blog_Schema)
 //<-------------------------------ROUTES------------------------------------------->
 //<--------HOME PAGE--------->
 app.get('/',(req,res)=>{
-    res.redirect('/blogs')
+    res.render('Home.ejs')
 })
 //<--------INDEX PAGE------->
 app.get('/blogs',(req,res)=>{
