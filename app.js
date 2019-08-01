@@ -2,11 +2,13 @@ const express =  require('express')
 const body_parser=require('body-parser')
 const method_override=require('method-override')
 const mongoose=require('mongoose')
+const express_sanitizer=require('express-sanitizer');
 
 //<--------Mongoose Connection----------------------->
 //<---gitignore-------------------------------------->
 mongoose.connect("mongodb+srv://random_user:qwerty123@cluster0-1jbsl.mongodb.net/test?retryWrites=true&w=majority", 
 { useNewUrlParser: true });
+
 
 const db= mongoose.connection
 
@@ -23,7 +25,8 @@ app.use(body_parser.urlencoded({extended:true}))
 //<------------Method Override------------->
 app.use(method_override("_method"))
 
-
+//<!--------Express sanitizer---------->
+app.use(express_sanitizer())
 
 //<-------------------Mongoose Schema---------->
 var Blog_Schema=new mongoose.Schema({
@@ -61,7 +64,12 @@ app.get('/blogs/new',(req,res)=>{
 })
 //<-----CREATE FORM-------->
 app.post('/blogs',(req,res)=>{
+    
     Blog.create(req.body.blog,function(err,newBlog){
+        console.log(req.body)
+       
+        console.log("----")
+        console.log(req.body)
         if(err){
             res.render("new.ejs")
         }
@@ -100,6 +108,7 @@ app.get('/blogs/:id/edit',(req,res)=>{
 
 // <-----UPDATE FORM----->
 app.put('/blogs/:id',(req,res)=>{
+    req.body.blog.body=req.sanitize(req.body.blog.body)
     Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,UpdatedBlog){
         if(err){
             res.redirect('/blogs')
