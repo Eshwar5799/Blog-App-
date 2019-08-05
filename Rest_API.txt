@@ -7,3 +7,5 @@
 7) Destroy || /dogs/:id     || DELETE || Delete the particular blog 
 
 HOME PAGE-Asking for Authentication,then redirect it to INDEX Page
+
+// Needs to add Authentication--->FB AND GOOGLE

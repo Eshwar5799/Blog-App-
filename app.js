@@ -4,6 +4,10 @@ const method_override=require('method-override')
 const mongoose=require('mongoose')
 const express_sanitizer=require('express-sanitizer');
 
+//<------------------Exported Router---------------->
+const AuthRoutes=require('./routes/auth_routes');
+
+
 //<--------Mongoose Connection----------------------->
 //<---gitignore-------------------------------------->
 mongoose.connect("mongodb+srv://random_user:qwerty123@cluster0-1jbsl.mongodb.net/test?retryWrites=true&w=majority", 
@@ -16,7 +20,9 @@ db.on('error',console.log.bind(console,'MongoDB error'))
 //<----------Usage----------------->
 const app = express()
 const port=8000
-
+//<------------------------------->
+//<--Auth Routes---------->
+app.use('/auth',AuthRoutes);
 //<-----------Styles--------->
 app.use(express.static('public'))
 //<----------Body Parser------>
@@ -37,6 +43,7 @@ var Blog_Schema=new mongoose.Schema({
 })
 //<-----USE MONGOOSE---------------->
 var Blog=mongoose.model("Blog",Blog_Schema)
+
 
 
 //<-------------------------------ROUTES------------------------------------------->
