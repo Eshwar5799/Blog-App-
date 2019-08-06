@@ -8,24 +8,19 @@ router.get('/Google',passport.authenticate('google',{
 
 // Google Logout
 router.get('/GoogleLogout',(req,res)=>{
-    res.send('Logging out with Google!!');
+    req.logOut();
+    res.redirect('/blogs');
 });
 
-// Facebook
-router.get('/Facebook',(req,res)=>{
-    res.send('Logging in with Facebook');
-})
 
-// Facebook Logout
-router.get('/FacebookLogout',(req,res)=>{
-    res.send('Logging out with Facebook');
-})
+
 
 
 //  Callback from google
 
 router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
-    
-    res.redirect("/profile/");
+    console.log(typeof(req.user));
+    console.log(req.user);
+   res.redirect("/profile/");
 })
 module.exports=router;

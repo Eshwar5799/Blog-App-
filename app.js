@@ -61,7 +61,7 @@ var Blog=mongoose.model("Blog",Blog_Schema)
 //<---------Cookie Session------------>
 app.use(cookieSession({
     maxAge:24*60*60*1000,
-    keys:["Ihavemadeanawesomewebsiteiguess"],
+    keys:[keys.session.cookieKey],
 
 }),
 );

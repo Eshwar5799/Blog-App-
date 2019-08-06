@@ -3,7 +3,8 @@ const Schema=mongoose.Schema;
 
 const UserSchema=new Schema({
     username:String,
-    googleID:String
+    googleID:String,
+    thumbnail:String
 
 })
 

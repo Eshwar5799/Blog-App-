@@ -26,7 +26,7 @@ passport.use(
     },(acessToken,RefreshToken,profile,done)=>{
        //  Callback function
       // console.log('Callback function fired!!');
-      // console.log(profile);
+       console.log(profile);
       //<-------------Retrieving User-------------->
       User.findOne({googleID:profile.id}).then((currentUser)=>{
         if(currentUser)
@@ -42,7 +42,8 @@ passport.use(
             // Create and save
             new User({
                 username:profile.displayName,
-                googleID:profile.id
+                googleID:profile.id,
+                thumbnail:profile._json.picture
             }).save().then((newUser)=>{
                    //console.log("The New User Created!!" + newUser);
                     done(null,newUser);
