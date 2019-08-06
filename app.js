@@ -3,26 +3,40 @@ const body_parser=require('body-parser')
 const method_override=require('method-override')
 const mongoose=require('mongoose')
 const express_sanitizer=require('express-sanitizer');
+const cookieSession=require('cookie-session');
+const passport=require('passport');
+const keys=require("./config/keys")
+
+//<-------------------------Passport Setup------->
+const Passport_Setup=require("./config/config_auth");
 
 //<------------------Exported Router---------------->
 const AuthRoutes=require('./routes/auth_routes');
+const ProfileRoutes=require('./routes/profile_routes');
 
 
 //<--------Mongoose Connection----------------------->
 //<---gitignore-------------------------------------->
-mongoose.connect("mongodb+srv://random_user:qwerty123@cluster0-1jbsl.mongodb.net/test?retryWrites=true&w=majority", 
-{ useNewUrlParser: true });
+//mongoose.connect("mongodb+srv://random_user:qwerty123@cluster0-1jbsl.mongodb.net/test?retryWrites=true&w=majority", 
+//{ useNewUrlParser: true });
+// initialize passport
+const app = express()
+const port=8000
+app.use(passport.initialize());
+app.use(passport.session());
 
+mongoose.connect(keys.mongodb.dbURI,{useNewUrlParser:true});
 
 const db= mongoose.connection
 
 db.on('error',console.log.bind(console,'MongoDB error'))
 //<----------Usage----------------->
-const app = express()
-const port=8000
+
 //<------------------------------->
 //<--Auth Routes---------->
 app.use('/auth',AuthRoutes);
+//<-----Profile Routes--------->
+app.use('/profile',ProfileRoutes);
 //<-----------Styles--------->
 app.use(express.static('public'))
 //<----------Body Parser------>
@@ -44,6 +58,13 @@ var Blog_Schema=new mongoose.Schema({
 //<-----USE MONGOOSE---------------->
 var Blog=mongoose.model("Blog",Blog_Schema)
 
+//<---------Cookie Session------------>
+app.use(cookieSession({
+    maxAge:24*60*60*1000,
+    keys:["Ihavemadeanawesomewebsiteiguess"],
+
+}),
+);
 
 
 //<-------------------------------ROUTES------------------------------------------->

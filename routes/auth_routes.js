@@ -1,10 +1,10 @@
 const router=require('express').Router()
-
+const passport=require('passport');
 
 // Google 
-router.get('/Google',(req,res)=>{
-res.send('Logging in with google');
-});
+router.get('/Google',passport.authenticate('google',{
+    scope:['profile']
+}));
 
 // Google Logout
 router.get('/GoogleLogout',(req,res)=>{
@@ -19,5 +19,13 @@ router.get('/Facebook',(req,res)=>{
 // Facebook Logout
 router.get('/FacebookLogout',(req,res)=>{
     res.send('Logging out with Facebook');
+})
+
+
+//  Callback from google
+
+router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
+    
+    res.redirect("/profile/");
 })
 module.exports=router;
