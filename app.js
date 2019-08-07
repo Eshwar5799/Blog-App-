@@ -21,7 +21,7 @@ const ProfileRoutes=require('./routes/profile_routes');
 //{ useNewUrlParser: true });
 // initialize passport
 const app = express()
-const port=8000
+const port=process.env.PORT||8000
 app.use(passport.initialize());
 app.use(passport.session());
 
