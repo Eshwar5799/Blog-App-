@@ -7,6 +7,8 @@ const cookieSession=require('cookie-session');
 const passport=require('passport');
 const keys=require("./config/keys")
 
+// <----------------- dotenv ------------->
+require('dotenv').config()
 //<-------------------------Passport Setup------->
 const Passport_Setup=require("./config/config_auth");
 
@@ -25,7 +27,7 @@ const port=process.env.PORT||8000
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(keys.mongodb.dbURI,{useNewUrlParser:true});
+mongoose.connect(process.env.MONGODB_URI || keys.mongodb.dbURI,{useNewUrlParser:true});
 
 const db= mongoose.connection
 
